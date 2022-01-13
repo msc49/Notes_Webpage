@@ -25,4 +25,23 @@
      notesView.displayNotes();
      expect(document.querySelectorAll('div.note').length).toBe(2);
    })
+
+   it('adds a new note', () => {
+    document.body.innerHTML = fs.readFileSync('./index.html');
+  
+    const model = new NotesModel();
+    const view = new NotesView(model);
+  
+    
+    const input = document.querySelector('#message-input');
+    input.value = 'My new amazing test note';
+  
+  
+    const button = document.querySelector('#add-note');
+    button.click();
+  
+  
+    expect(document.querySelectorAll('div.note').length).toEqual(1);
+    expect(document.querySelectorAll('div.note')[0].innerText).toEqual('My new amazing test note');
+  });
  })

@@ -5,6 +5,14 @@ class NotesView {
   constructor(notesModelInstance) {
     this.notesModelInstance = notesModelInstance;
     this.mainContainerEl = document.querySelector('#main-container');
+    this.addNotebutton = document.querySelector('#add-note');
+    this.inputEl = document.querySelector('#message-input');
+
+    this.addNotebutton.addEventListener("click", () => {
+      this.notesModelInstance.addNote(this.inputEl.value);
+      this.displayNotes();
+    })
+
   }
 
 //   get the list of notes from the model.
