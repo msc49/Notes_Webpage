@@ -44,4 +44,18 @@
     expect(document.querySelectorAll('div.note').length).toEqual(1);
     expect(document.querySelectorAll('div.note')[0].innerText).toEqual('My new amazing test note');
   });
+
+  it('should display notes twice',() => {
+    document.body.innerHTML = fs.readFileSync('./index.html');
+    const model = new NotesModel();
+    const view = new NotesView(model);
+    model.addNote('hello')
+    model.addNote('bye')
+
+    view.displayNotes();
+    view.displayNotes();
+    expect(document.querySelectorAll('div.note').length).toEqual(2);
+
+
+  })
  })

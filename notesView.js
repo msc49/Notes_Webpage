@@ -19,6 +19,8 @@ class NotesView {
 // for each note, create a new div element on the page (with an HTML class "note").
 
   displayNotes() {
+
+    this.remove_notes();
     let notes = this.notesModelInstance.getNotes();
 
     for (const note of notes) {
@@ -27,6 +29,18 @@ class NotesView {
       div.innerText = note;
       this.mainContainerEl.append(div);
     }
+    this.clear_text()
+  }
+
+  remove_notes() {
+    let all_notes = document.querySelectorAll('.note')
+    for(let element of all_notes) {
+      element.remove();
+    }
+  }
+
+  clear_text() {
+    this.inputEl.value = ""
   }
 
 }
